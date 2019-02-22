@@ -1,45 +1,35 @@
-# ******************************************************************************
-# # Homework Assignment:
-# # 12-Web Scraping and Document Databases - Mission to Mars
-# 
+# ********************************************************
+# Homework Assignment:
+# 12-Web Scraping and Document Databases - Mission to Mars
 # @Author: Jeffery Brown (daddyjab)
-# @Date: 2/19/19
+# @Date: 2/21/19
+# @File: scrape_mars.py
 # 
-# ******************************************************************************
-# 
+# ******************************************************** 
 
-# # Dependencies  ********************************************
+# # Dependencies ********************************************
 
 # Pandas for DataFrames
 import pandas as pd
-
-# Web Requests
-import requests
 
 # Splinter and BeautifulSoup for Web Scraping (+ Pandas)
 from splinter import Browser
 from bs4 import BeautifulSoup
 
-# SQLAlchemy and PyMongo for MongoDB operations
-from sqlalchemy import create_engine
+# PyMongo for MongoDB operations
 import pymongo
 
 # Time for Last Update info
 import datetime as dt
 
-# Pretty Print to help with debugging
-from pprint import pprint
-
 def scrape():
 
     # # Scraping ********************************************
-
     # ## NASA Mars News
 
     # NASA Mars News website
     url_nasa_mars_base = 'https://mars.nasa.gov'
     url_nasa_mars_news = url_nasa_mars_base + '/news'
-    url_nasa_mars_news
 
     # Setup the Splinter browser
     executable_path = {'executable_path': 'chromedriver.exe'}
@@ -56,20 +46,11 @@ def scrape():
     news_info = soup.find('li', class_ = 'slide')
 
     news_info_url = url_nasa_mars_base + news_info.find('a')['href']
-    news_info_url
-
     news_info_date = news_info.find('div', class_ = 'list_date').text
-    news_info_date
-
     news_info_title = news_info.find('div', class_ = 'content_title').text
-    news_info_title
-
     news_info_teaser = news_info.find('div', class_ = 'article_teaser_body').text
-    news_info_teaser
-
     news_info_image_url = url_nasa_mars_base + news_info.find('div',class_ = 'list_image').find('img')['src']
-    news_info_image_url
-
+ 
     # Put all of the Mars News information in a dictionary
     news_info_dict = {
         'news_info_date': news_info_date,
@@ -85,7 +66,6 @@ def scrape():
     # NASA JPL website
     url_nasa_jpl_base = 'https://www.jpl.nasa.gov'
     url_nasa_jpl_mars = url_nasa_jpl_base + '/spaceimages/?search=&category=Mars'
-    url_nasa_jpl_mars
 
     # Use Splinter to navigate to the page
     browser.visit( url_nasa_jpl_mars )
@@ -98,7 +78,6 @@ def scrape():
     featured_image_info = soup.find('a', id = 'full_image')
 
     featured_image_details_url = url_nasa_jpl_base + featured_image_info['data-link']
-    featured_image_details_url
 
     # Click the link to get to the details page,
     # so we can get the high resolution featured picture
@@ -109,20 +88,16 @@ def scrape():
 
     # Now, get the URL for the high resolution picture
     featured_image_details_info = soup.find('img',class_ = 'main_image')
-
     featured_image_url = url_nasa_jpl_base + featured_image_details_info['src']
-    featured_image_url
 
     # Also, while we're here... get the image caption, too
     featured_image_title = featured_image_details_info['title']
-    featured_image_title
 
     # Put all of the JPL Mars Featured Image information in a dictionary
     featured_image_dict = {
         'featured_image_title': featured_image_title,
         'featured_image_url': featured_image_url
     }
-    featured_image_dict
 
     # ## Mars Weather  ********************************************
 
@@ -142,14 +117,10 @@ def scrape():
     for mwi in mars_weather_info:
         mwi_item = mwi.find('strong', class_ = 'fullname', string='Mars Weather')
         if mwi_item:
-            # print( mwi_item )
             break
 
     mars_weather = mwi.find('div', class_ = 'js-tweet-text-container').text.strip()
-    mars_weather
-
     mars_weather_url = mwi.find('a', class_ = 'twitter-timeline-link')['href']
-    mars_weather_url
 
     # Put all of the Twitter Mars Weather information in a dictionary
     mars_weather_dict = {
@@ -171,8 +142,6 @@ def scrape():
     mars_facts_df = space_facts_tables_df[0]
 
     mars_facts_df.rename( columns = {0:'Fact', 1: 'Mars'}, inplace=True )
-    mars_facts_df
-
     mars_facts_table = mars_facts_df.to_html( na_rep='', index = False )
 
     # ## Mars Hemispheres  ********************************************
@@ -180,7 +149,6 @@ def scrape():
     #https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars
     url_usgs_astro_base = 'https://astrogeology.usgs.gov'
     url_usgs_astro = url_usgs_astro_base + '/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
-    url_usgs_astro
 
     # Use Splinter to navigate to the page
     browser.visit( url_usgs_astro )
@@ -202,9 +170,6 @@ def scrape():
         # Get the URL of the details page (where the full resolution image can be found)
         h_details_url = url_usgs_astro_base + h.find('a', class_ = 'itemLink product-item')['href']
         
-        # print (h_title)
-        # print (h_details_url)
-        
         # Click to visit the details page
         browser.visit( h_details_url )
         
@@ -213,12 +178,9 @@ def scrape():
         
         # Get the link to the full resolution image (1024x1024)
         h_full_image_url = soup.find('div', class_ = 'downloads').find('a')['href']
-        # print (h_full_image_url)
         
         # Get the description of the full resolution image
         h_full_image_desc = soup.find('div', class_ = 'content').find('p').text
-        # print( h_full_image_desc )
-        # print ("-"*40)
         
         # Add a dictionary of this hemisphere info to the list
         h_dict = {
@@ -243,7 +205,6 @@ def scrape():
         'mars_facts_table': mars_facts_table,
         'hemiphere_image_list': hemiphere_image_list
     }
-
 
     # Return the results
     return mars_info_dict

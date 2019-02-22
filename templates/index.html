@@ -1,28 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- 
+Homework Assignment:
+12-Web Scraping and Document Databases - Mission to Mars
+
+@Author: Jeffery Brown (daddyjab)
+@Date: 2/21/19
+@File: index.html
+ -->
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Web Page Title -->
   <title>Mission to Mars</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+  <!-- Bring in our bootstrap stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
 </head>
 
 <body>
-    <div class="container text-center">
-        <h1 class="jumbotron">
-            Mission to Mars
-        </h1>
-        <a href="/scrape">Scrape</a>
-    
-        <div>
-            <div class='col-md-12'>
-                <p>{{mi_info.news_info_dict.news_info_title}}</p>
-                <p>Last Update: {{mi_info.update_timestamp}}</p>
+    <!-- Provide a background pictue of the Martian surface for the full page -->
+    <div class="bg">
+        <div class="container">
+
+            <div class="row">
+                <!-- Put the timestamp of the last data scrape in the upper-left -->
+                <div class="col-md-2">
+                    <div class="last_update">
+                        <p>Last Update:<br>{{mi_info.update_timestamp}}</p>
+                    </div>
+                </div>
+
+                <!-- Banner title for the Page -->
+                <div class="col-md-8">
+                    <div class="page_banner">
+                        <h1 >Mission to Mars</h1>
+                    </div>
+                </div>
+
+                <!-- Put a fixed-position "Scrape Data!" button in the upper-right -->
+                <div class="col-md-2">
+                    <div class="fixed-action-btn scape_button">
+                        <div class="scrape_button">
+                            <a class="btn btn-success" href="/scrape">Scrape<br>Data!</a>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
+
+            <div class="row">
+                <div class='col-md-4'>
+                    <div class='card'>
+                        <div class='featured_image'>
+                            <img class='card-img-top' src={{mi_info.featured_image_dict.featured_image_url}}>
+                            <div class="card-body">
+                                <h4 class="card-title"><a>Card Title</a></h4>
+                                <p class="card-text">{{mi_info.featured_image_dict.featured_image_title}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class='col-md-8'>
+                    <p>{{mi_info.news_info_dict.news_info_title}}</p>
+                </div>
+            </div>
+
         </div>
-    </div>
+   </div>
+
 </body>
 
 </html>

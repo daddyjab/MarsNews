@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<!-- 
+**************************************************************
+Homework Assignment: 11-Web - Latitude
+
+@Author: Jeffery Brown (daddyjab)
+@Date: 2/12/19
+@Page: index.html
+
+**************************************************************
+ -->
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Bootstrap Visualization Dashboard</title>
+
+  <!-- Bring in our bootstrap stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="style-jb.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row align-items-center">
+
+      <div class="col-md-12">
+        <div class="row">   
+          <div class="page_heading">
+            
+            <div class="col-md-2 col-md-offset-1">
+              <div class="header">
+                <a href="index.html"><h1>Latitude</h1></a>
+              </div>  
+            </div>
+
+            <div class="col-md-4 col-md-offset-5">
+              <div class="navbar">
+                <ul>
+                  <li>
+                      <select id="fig_select" onchange="location = this.value;">
+                        <option value="" selected disabled hidden>Plots</option>
+                        <option value="vis_temp.html">Max Temperature</option>
+                        <option value="vis_humid.html">Humidity</option>
+                        <option value="vis_cloud.html">Cloudiness</option>
+                        <option value="vis_wind.html">Wind Speed</option>
+                      </select>              
+                  </li>
+                  <li><a href="vis_compare.html">Comparison</a></li>
+                  <li><a href="vis_data.html">Data</a></li>
+                </ul>  
+              </div>
+            </div>
+            
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+
+          <div class="overall_content">
+              <div class="row">
+
+                <div class="col-md-7">
+                    <div class="featured_content">
+                      <!-- This is the feature plot and associated text -->
+                      <h1>Summary: Latitude vs. X</h1>
+                      <div class="plot_summary">
+                        <a href="vis_temp.html">
+                          <img src="Resources/Fig1_Lat_vs_Temp.png">
+                        </a>
+                      </div>
+                        <p><strong>The purpose of this project was to analyze how weather changes by latitude.</strong></p>
+                        <p>
+                        The analysis was performed by defining a grid of latitude and longitude points
+                        with uniform angular spacing, and then randomly selecting cities close to each
+                        grid point.  Weather data was obtained using the OpenWeatherMap API,
+                        and results were populated using Matplotlib.
+                        </p>
+                        <p>
+                        <strong>Several conclusions were drawn from the results:</strong>
+                        <ul>
+                          <li>
+                            Temperature shows a clear pattern of variation by latitude, with temperatures increasing near the equator (0 degree latitude) and decreasing near the poles
+                          </li>
+                          <li>
+                            Neither Humidity nor Cloudiness show a pattern of variation by latitude
+                          </li>
+                          <li>
+                            Wind Speed is relatively uniform across most latitudes, but with relatively higher wind speeds occurring near the poles
+                          </li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                  <div class="selection_content">
+                    <!-- This is the selection content for picking specific plots -->
+                    <h1>Visualizations</h1>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="selection_plot_left">          
+                            <a href="vis_temp.html">
+                              <img src="Resources/Fig1_Lat_vs_Temp.png" alt="Plot of Latitude vs. Temperature">
+                            </a>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="selection_plot_right">          
+                          <a href="vis_humid.html">
+                            <img src="Resources/Fig2_Lat_vs_Humid.png" alt="Plot of Latitude vs. Humidity">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="selection_plot_left">          
+                          <a href="vis_cloud.html">
+                            <img src="Resources/Fig3_Lat_vs_Cloud.png" alt="Plot of Latitude vs. Cloudiness">
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="selection_plot_right">          
+                          <a href="vis_wind.html">
+                            <img src="Resources/Fig4_Lat_vs_Wind.png" alt="Plot of Latitude vs. Wind Speed">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
