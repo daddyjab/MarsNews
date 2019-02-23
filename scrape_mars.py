@@ -156,13 +156,13 @@ def scrape():
     # Create a BeautifulSoup object to parse the HTML content
     soup = BeautifulSoup(browser.html, 'lxml')
 
-    hemiphere_image_info = soup.find_all('div', class_ = 'description')
+    hemisphere_image_info = soup.find_all('div', class_ = 'description')
 
     # Initialize a list of hemisphere image information
-    hemiphere_image_list = []
+    hemisphere_image_list = []
 
     # Loop through all of the hemispheres listed on the page
-    for h in hemiphere_image_info:
+    for h in hemisphere_image_info:
         
         # Get the image title
         h_title = h.find('h3').text
@@ -189,7 +189,7 @@ def scrape():
             'h_full_image_desc': h_full_image_desc
         }
         
-        hemiphere_image_list.append( h_dict )
+        hemisphere_image_list.append( h_dict )
 
     # Obtain the current time as a timestamp for this scrape
     update_timestamp = dt.datetime.now().strftime('%c')
@@ -203,8 +203,11 @@ def scrape():
         'featured_image_dict': featured_image_dict,
         'mars_weather_dict': mars_weather_dict,
         'mars_facts_table': mars_facts_table,
-        'hemiphere_image_list': hemiphere_image_list
+        'hemisphere_image_list': hemisphere_image_list
     }
 
+    # Close the browser
+    browser.quit()
+    
     # Return the results
     return mars_info_dict

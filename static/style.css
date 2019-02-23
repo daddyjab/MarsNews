@@ -11,6 +11,8 @@ Homework Assignment:
     height: 100%;
 } */
 
+/*************************************************************/
+/* Background Image for the Mission to Mars page */
 .bg {
     /* The image used */
     background-image: url(Images/vikinglander2-2.jpg);
@@ -23,7 +25,9 @@ Homework Assignment:
     background-repeat: no-repeat;
     background-size: cover;
   }
-  
+
+/*************************************************************/
+/* Page banner  */
 .page_banner h1 {
   color: black;
   background-color: transparent;
@@ -32,6 +36,8 @@ Homework Assignment:
   text-align: center;
 }
 
+/*************************************************************/
+/* Scrape button -- hoping to make this a fixed button on the page */
 .scrape_button {
   float: right;
 }
@@ -45,6 +51,8 @@ Homework Assignment:
   font-weight: 600;
 }
 
+/*************************************************************/
+/* Last Update - showing timestamp of the last webscrape */
 .last_update {
   float: left;
 }
@@ -59,6 +67,198 @@ Homework Assignment:
   text-align: left;
 }
 
+/*************************************************************/
+/* Featured Image */
+.featured_image {
+  background-color: tan;
+  width: 100%;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  margin-top: 20px;
+}
+
 .featured_image img {
-  width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+.featured_image h4 {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+  color: black;
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.featured_image p {
+  width: 100%;
+  color: black;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+}
+
+/*************************************************************/
+/* Latest Mars News */
+.mars_news {
+  background-color: tan;
+  width: 100%;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  margin-top: 20px;
+}
+
+.mars_news img {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+.mars_news h4 {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+  color: black;
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.mars_news h5 {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: italic;
+  text-align: center;
+}
+
+.mars_news p {
+  width: 100%;
+  color: black;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+}
+
+
+/*************************************************************/
+/* Latest Mars Weather */
+.mars_weather {
+  background-color: tan;
+  width: 100%;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  margin: 0 auto;
+  padding: 10px 0 0 0;
+}
+
+.mars_weather h4, a {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+  color: black;
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.mars_weather p {
+  width: 100%;
+  color: black;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+}
+
+
+/*************************************************************/
+/* Mars Facts */
+.mars_facts {
+  background-color: tan;
+  width: 100%;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  margin: 0 auto;
+  padding: 10px 0 0 0;
+}
+
+.mars_facts h4, a {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+  color: black;
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.mars_facts p, table {
+  width: 100%;
+  color: black;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 auto;
+}
+
+
+/*************************************************************/
+/* Hemisphere Images */
+.hemi_image {
+  background-color: tan;
+  width: 100%;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  margin-top: 20px;
+}
+
+.hemi_image img {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+.hemi_image h4 {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+  color: black;
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.hemi_image h5 {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: italic;
+  text-align: center;
+}
+
+.hemi_image p {
+  width: 100%;
+  color: black;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.jab_msg {
+  font-size: 60px;
+  color: black;
+  font-weight: 800;
 }

@@ -54,24 +54,91 @@ Homework Assignment:
             </div>
 
             <div class="row">
-                <div class='col-md-4'>
+                <div class='col-md-7'>
                     <div class='card'>
                         <div class='featured_image'>
-                            <img class='card-img-top' src={{mi_info.featured_image_dict.featured_image_url}}>
+                            <a href={{mi_info.featured_image_dict.featured_image_url}} target='_blank'><img class='card-img-top' src={{mi_info.featured_image_dict.featured_image_url}}></a>
                             <div class="card-body">
-                                <h4 class="card-title"><a>Card Title</a></h4>
+                                <h4 class="card-title"><a href={{mi_info.featured_image_dict.featured_image_url}} target='_blank'>Today's Featured Image</a></h4>
                                 <p class="card-text">{{mi_info.featured_image_dict.featured_image_title}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-md-4 col-md-offset-1'>
+                    <div class="row">
+
+                            <div class='card'>
+                                <div class='mars_news'>
+                                    <a href={{mi_info.news_info_dict.news_info_url}} target='_blank'><img class='card-img-top' src={{mi_info.news_info_dict.news_info_image_url}}></a>
+                                    <div class="card-body">
+                                        <h4 class="card-title"><a href={{mi_info.news_info_dict.news_info_url}} target='_blank'>Latest Mars News</a></h4>
+                                        <div class="card-text">
+                                            <h5>{{mi_info.news_info_dict.news_info_title}}<br>({{mi_info.news_info_dict.news_info_date}})</h5>
+                                            <p>{{mi_info.news_info_dict.news_info_teaser}}</p>
+                                        </div>
+                                    </div>                                
+                                </div>
+                            </div>
+
+                    </div>
+
+                    <br> 
+
+                    <div class="row">
+                        <div class='card'>
+                            <div class='mars_weather'>
+                                <div class="card-body">
+                                    <h4 class="card-title"><a href={{mi_info.mars_weather_dict.mars_weather_url}} target='_blank'>Latest Mars Weather</a></h4>
+                                    <div class="card-text">
+                                        <p>{{mi_info.mars_weather_dict.mars_weather}}</p>
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <br> 
+                
+                    <div class="row">
+                        <div class='card'>
+                            <div class='mars_facts'>
+                                <div class="card-body">
+                                    <h4 class="card-title">Mars Facts</h4>
+                                    <!-- <div class="card-text"> -->
+                                        <p>{{mi_info.mars_facts_table|safe}}</p>
+                                    <!-- </div> -->
+                                </div>                                
                             </div>
                         </div>
                     </div>
 
                 </div>
 
-                <div class='col-md-8'>
-                    <p>{{mi_info.news_info_dict.news_info_title}}</p>
-                </div>
             </div>
 
+            <br>                
+
+          <div class="row">
+
+                {% for h in mi_info.hemisphere_image_list  %}
+                <div class='col-md-6'>
+
+                    <div class='card'>
+                        <div class='hemi_image'>
+                            <a href={{ h.h_full_image_url }} target='_blank'><img class='card-img-top' src={{ h.h_full_image_url }}></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href={{ h.h_full_image_url }} target='_blank'>{{ h.h_title }}</a></h4>
+                                <p class="card-text">{{ h.h_full_image_desc }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                {% endfor %}
+                  
+            </div>
         </div>
    </div>
 
