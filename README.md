@@ -1,6 +1,6 @@
 # Mars News
 
-This application provides aMars News Site, generated through Web Scraping and rendered as a responsive page.
+This application provides a Mars News Site, generated through Web Scraping and rendered as a responsive page.
 
 # Technologies Used
 
